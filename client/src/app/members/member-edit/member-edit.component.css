@@ -1,0 +1,28 @@
+.img-thumbnail {
+  margin: 25px;
+  width: 85%;
+  height: 85%;
+}
+
+.card-body {
+  padding: 0 25px;
+}
+
+.card-footer {
+  padding: 10px 15px;
+  background-color: white;
+  border-top: none;
+}
+
+/* .swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ */
