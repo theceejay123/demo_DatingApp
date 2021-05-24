@@ -33,7 +33,7 @@ namespace API.Controllers
       return Ok(users);
     }
 
-    [HttpGet("{username}", Name="GetUser")]
+    [HttpGet("{username}", Name = "GetUser")]
     public async Task<ActionResult<MemberDTO>> GetUser(string username)
     {
       return await _userRepository.GetMemberAsync(username);
@@ -81,7 +81,7 @@ namespace API.Controllers
       var user = await _userRepository.GetUserByUserNameAsync(User.GetUserName());
       var photo = user.Photos.FirstOrDefault(p => p.Id == photoId);
 
-      if(photo.IsMain) return BadRequest("This is already your main photo");
+      if (photo.IsMain) return BadRequest("This is already your main photo");
 
       var currentMain = user.Photos.FirstOrDefault(p => p.IsMain);
       if (currentMain != null) currentMain.IsMain = false;
@@ -93,15 +93,16 @@ namespace API.Controllers
     }
 
     [HttpDelete("delete-photo/{photoId}")]
-    public async Task<ActionResult> DeletePhoto(int photoId) {
+    public async Task<ActionResult> DeletePhoto(int photoId)
+    {
       var user = await _userRepository.GetUserByUserNameAsync(User.GetUserName());
       var photo = user.Photos.FirstOrDefault(p => p.Id == photoId);
       if (photo == null) return NotFound();
       if (photo.IsMain) return BadRequest("Main photo cannot be deleted");
-      if(photo.PublicId != null)
+      if (photo.PublicId != null)
       {
         var result = await _photoService.DeletePhotoAsync(photo.PublicId);
-        if(result.Error != null) return BadRequest(result.Error.Message);
+        if (result.Error != null) return BadRequest(result.Error.Message);
       }
 
       user.Photos.Remove(photo);

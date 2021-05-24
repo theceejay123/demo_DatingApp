@@ -2,15 +2,15 @@ using System;
 
 namespace API.Extensions
 {
-    public static class DateTimeExtensions
+  public static class DateTimeExtensions
+  {
+    public static int CalculateAge(this DateTime dob)
     {
-        public static int CalculateAge(this DateTime dob)
-        {
-            var today= DateTime.Today;
-            var age = today.Year - dob.Year;
+      var today = DateTime.Today;
+      var age = today.Year - dob.Year;
 
-            if (dob.Date > today.AddYears(-age)) age--;
-            return age;
-        }
+      if (dob.Date > today.AddYears(-age)) age--;
+      return age;
     }
+  }
 }
