@@ -40,7 +40,7 @@
         alt="{{ user.userName }}"
       />
       <a class="dropdown-toggle text-dark" dropdownToggle
-        >Welcome {{ user.userName | titlecase }}</a
+        >Welcome {{ user.knownAs | titlecase }}</a
       >
       <div class="dropdown-menu mt-3" *dropdownMenu>
         <a routerLink="/member/edit" class="dropdown-item">Edit Profile</a>
