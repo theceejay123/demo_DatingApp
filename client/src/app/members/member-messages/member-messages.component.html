@@ -1,13 +1,15 @@
 <div class="card">
-  <div class="card-body">
+  <div
+    class="card-body"
+    #scrollMe
+    style="overflow: scroll; height: 535px"
+    [scrollTop]="scrollMe.scrollHeight"
+  >
     <div *ngIf="(messageService.messageThread$ | async)?.length === 0">
       It's pretty lonely... Say hi by using the message box below!
     </div>
 
     <ul
-      #scrollMe
-      style="overflow: scroll; height: 500px"
-      [scrollTop]="scrollMe.scrollHeight"
       *ngIf="(messageService.messageThread$ | async)?.length !== 0"
       class="chat"
     >
@@ -67,9 +69,10 @@
           <button
             class="btn btn-primary"
             type="submit"
-            [disabled]="!messageForm.valid"
+            [disabled]="!messageForm.valid || loading"
           >
             Send
+            <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
           </button>
         </div>
       </div>
