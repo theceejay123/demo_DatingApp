@@ -22,8 +22,6 @@ namespace API.Extensions
       services.AddScoped<LogUserActivity>();
       services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
       services.AddDbContext<DataContext>(options =>
-      {
-        services.AddDbContext<DataContext>(options =>
         {
           var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
@@ -59,8 +57,6 @@ namespace API.Extensions
           // or from the environment variable from Heroku, use it to set up your DbContext.
           options.UseNpgsql(connStr);
         });
-
-      });
 
       return services;
     }
